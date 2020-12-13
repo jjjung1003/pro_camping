@@ -5,8 +5,87 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+	#first {
+		text-align:center;
+	}
+</style>
+<script>
+
+	var pwd_chk=0;
+	
+	function pwdchk(tt) {
+		
+		if(!(tt.value.length>=4 && tt.value.length<=10))
+		{
+			document.getElementById("pwd_msg").innerHTML="<span style='color:red;'> 4자이상 10자 이하로 가능합니다 </span>";
+			pwd_chk=0;
+		}	
+		else if(tt.value != document.jjj.pwd2.value)
+		{
+			document.getElementById("pwd_msg").innerHTML="";
+			pwd_chk=0;
+		}	
+		else
+		{
+			document.getElementById("pwd_msg").innerHTML="";
+		}
+	}
+	
+	function pwdchk_eq(tt) {
+		
+		if(!(tt.value.length>=4 && tt.value.length<=10))
+		{
+			document.getElementById("pwd2_msg").innerHTML="<span style='color:red;'> 4자이상 10자 이하로 가능합니다 </span>";
+			pwd_chk=0;
+		}
+		else if(tt.value != document.jjj.pwd.value)
+		{
+			document.getElementById("pwd2_msg").innerHTML="<span style='color:red;'> 기재하신 비밀번호와 다릅니다. </span>"
+			pwd_chk=0;
+		}
+		else
+		{
+			document.getElementById("pwd2_msg").innerHTML="<span style='color:blue;'> 비밀번호가 일치합니다.</span>"
+			pwd_chk=1;
+		}
+	}
+	
+	function check(tt) {  // tt=> document.폼
+
+		if(pwd_chk==0)
+		{
+			alert("비밀번호를 확인해주세요");
+			return false;
+		}
+		else
+			return true;
+		
+	}
+	
+</script>
 </head>
 <body>
-
+	비밀번호 변경 <hr>
+	<div id="first">
+	<form method="post" name="jjj" action="pwd_change_ok" onsubmit="return check(this)">
+	  <input type="hidden" name="email" value="${email}">
+	  <table align="center">
+	    <tr>
+	      <td>
+	  	    <input type="password" name="pwd" id="pwd" placeholder="비밀번호" onblur="pwdchk(this)" style="width:300px; height:30px;"> <br>
+	        <span id="pwd_msg" style="font-size:12px;"></span>
+	      </td>   
+	    </tr>
+	    <tr>
+	      <td>
+	  		<input type="password" name="pwd2" id="pwd2" placeholder="비밀번호 확인" onblur="pwdchk_eq(this)" style="width:300px; height:30px;"> <br>
+	 		<span id="pwd2_msg" style="font-size:12px;"></span>
+	      </td>   
+	    </tr>	    
+	  </table>  <p>
+	  <div align="center"> <input type="submit" value="변경 신청"> </div>
+	</form>
+	</div>
 </body>
 </html>

@@ -10,7 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.kovea.membercommand.Id_search_okCommand;
 import kr.co.kovea.membercommand.Login_okCommand;
 import kr.co.kovea.membercommand.Mail_SendCommand;
 import kr.co.kovea.memberdao.MemberDao;
@@ -44,7 +48,7 @@ public class MemberController {
 		return "/member/mem_second";
 	}
 	
-	@RequestMapping("/userid_check")
+	@RequestMapping("/member/userid_check")
 	public void userid_check(PrintWriter out,HttpServletRequest request)
 	{
 		String userid=request.getParameter("userid");
@@ -85,15 +89,21 @@ public class MemberController {
 	}
 
 	@RequestMapping("/login/id_search")
-	public String id_search()
+	public String id_search(HttpServletRequest request,Model model)
 	{
+		model.addAttribute("chk", request.getParameter("chk"));
+		model.addAttribute("name", request.getParameter("name"));
+		model.addAttribute("userid", request.getParameter("userid"));
 		return "/login/id_search";
 	}
 	 
 	@RequestMapping("/login/id_search_ok")
-	public String id_search_ok()
+	public String id_search_ok(MemberDto mdto,Model model)
 	{
-		return "/login/id_search_ok";
+		MemberDao mdao=sqlSession.getMapper(MemberDao.class);
+		Id_search_okCommand lsoc=new Id_search_okCommand();
+		String url=lsoc.id_search_ok(mdto,model,mdao);
+		return url;
 	}
 	
 	@RequestMapping("/login/email_send")
@@ -103,23 +113,43 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/login/pwd_search")
-	public String pwd_search()
+	public String pwd_search(HttpServletRequest request,Model model)
 	{
+		model.addAttribute("mdto3", request.getParameter("mdto3"));
+		model.addAttribute("chk", request.getParameter("chk"));
 		return "/login/pwd_search";
 	}
 	
 	@RequestMapping("/login/pwd_search_ok")
-	public String pwd_search_ok(HttpServletRequest request) throws Exception
+	public String pwd_search_ok(MemberDto mdto) throws Exception
 	{
+		MemberDao mdao=sqlSession.getMapper(MemberDao.class);
 		Mail_SendCommand msc=new Mail_SendCommand();
-		msc.email_send(request);				
-		return "redirect:/login/login";
+		String url=msc.email_send(mdto,mdao);				
+		return url;
 	}
 	
 	@RequestMapping("/login/pwd_change")
-	public String pwd_change()
+	public String pwd_change(HttpServletRequest request,Model model)
 	{
+		model.addAttribute("email",request.getParameter("email"));
 		return "/login/pwd_change";
+	}
+	
+	@RequestMapping("/login/pwd_change_ok")
+	public String pwd_change_ok(MemberDto mdto)
+	{
+		MemberDao mdao=sqlSession.getMapper(MemberDao.class);
+		String decode_email="";
+		
+		for(int i=0; i<mdto.getEmail().length(); i++)
+		{
+			decode_email=decode_email+(char)(mdto.getEmail().charAt(i)-1);
+		}
+		mdto.setEmail(decode_email);
+		
+		mdao.pwd_change_ok(mdto);
+		return "redirect:/login/login";
 	}
 	
 	@RequestMapping("/login/mypage")
@@ -142,7 +172,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("login/mem_update_ok")
-	public String mem_update_ok(MemberDto mdto)
+	public String mem_update_ok(HttpServletRequest request,MemberDto mdto)
 	{
 		MemberDao mdao=sqlSession.getMapper(MemberDao.class);
 		mdao.mem_update_ok(mdto);
@@ -150,12 +180,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping("login/mem_del")
-	public String mem_del(HttpServletRequest request)
+	public String mem_del(HttpServletRequest request,HttpSession session)
 	{
 		String id=request.getParameter("id");
 		MemberDao mdao=sqlSession.getMapper(MemberDao.class);
 		mdao.mem_del(id);
-		return "login/mem_del";
+		session.invalidate();
+		return "redirect:/main/index";
 	}
 	
 	

@@ -14,11 +14,6 @@
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 
-	function sel_year()
-	{
-		
-	}
-
 	var cyj=new XMLHttpRequest();
 	var id_chk=0;
 	var pwd_chk=0;
@@ -116,7 +111,7 @@
 			 document.jjj.email.focus();
 			 return false;
 		}
-		 else if(document.getElementById("year").selectedIndex==0||document.getElementById("month").selectedIndex==0||document.getElementById("day").selectedIndex==0)
+		else if(document.getElementById("year").selectedIndex==0||document.getElementById("month").selectedIndex==0||document.getElementById("day").selectedIndex==0)
 		{
 			 alert("birth 확인해주세요");
 			 document.jjj.birth.focus();
@@ -133,35 +128,41 @@
 			 document.jjj.phone.focus();
 			 return false;
 		}
+		else if(document.getElementById("year").value > 2020-14)
+		{
+			alert("14세 미만은 가입할 수 없습니다.");
+			return false;
+		}
+			
 		else
 			return true;
  
 		
 	}
-	
-	/* function age14(tt) {		//나이제한... 
-	
-		$("#jjj").submit(function(){
-		    var day = $("#day").val();
-		    var month = $("#month").val();
-		    var year = $("#year").val();
-		    var age = 14;
-		    var mydate = new Date();
-		    mydate.setFullYear(year, month-1, day);
-	
-		    var currdate = new Date();
-		    currdate.setFullYear(currdate.getFullYear() - age);
-		    if ((currdate - mydate) < 0){
-		        alert("Sorry, only persons over the age of " + age + " may enter this site");
-		        return false;
-		    }
-		    return true;
-		});
-		
-	} */
 
-
+	
+	
 </script>
+<!--
+
+	$("#jjj").submit(function(){
+	    var day = $("#day").val();
+	    var month = $("#month").val();
+	    var year = $("#year").val();
+	    var age = 14;
+	    var mydate = new Date();
+	    mydate.setFullYear(year, month-1, day);
+	
+	    var currdate = new Date();
+	    currdate.setFullYear(currdate.getFullYear() - age);
+	    if ((currdate - mydate) < 0){
+	        alert("Sorry, only persons over the age of " + age + " may enter this site");
+	        return false;
+	    }
+	    return true;
+	});
+	
+-->
 </head>
 <body>
 회원정보 입력
@@ -199,7 +200,7 @@
 	    </tr>
 	    <tr>
 	      <td>	      
-	         <select id="year" name="year" id="year" style="width:148px; height:40px;">
+	         <select id="year" name="year" style="width:148px; height:40px;">
 	           <option> 생년 </option>
 		         <c:forEach var="i" begin="0" end="${2020-1900}">
 		         	<c:set var="year" value="${2020-i}" />
@@ -207,7 +208,7 @@
 	             </c:forEach>
 	         </select>
 	         
-	         <select id="month" name="month" id="month" style="width:148px; height:40px;">
+	         <select id="month" name="month" style="width:148px; height:40px;">
 	           <option> 월 </option>
 	             <c:forEach var="i" begin="1" end="${12}">
 		         	<c:set var="month" value="${13-i}" />
@@ -215,7 +216,7 @@
 	             </c:forEach>
 	         </select>
 	         
-	         <select id="day" name="day" id="day" style="width:148px; height:40px;">
+	         <select id="day" name="day" style="width:148px; height:40px;">
 	           <option> 일 </option>
 	           	 <c:forEach var="i" begin="1" end="${31}">
 		         	<c:set var="day" value="${32-i}" />

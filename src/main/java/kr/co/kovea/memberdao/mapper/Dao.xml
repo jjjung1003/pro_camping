@@ -15,9 +15,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 			
 	<select id="login_ok" parameterType="kr.co.kovea.memberdto.MemberDto" resultType="kr.co.kovea.memberdto.MemberDto">
-		select * from member where userid=#{userid} and pwd=#{pwd}
+		select * from member where userid=#{userid} and pwd=#{pwd} and withdraw=0
 	</select>
 	
+	<select id="id_search_ok" parameterType="kr.co.kovea.memberdto.MemberDto" resultType="kr.co.kovea.memberdto.MemberDto">
+		select * from member where name=#{name} and phone=#{phone}
+	</select>
+
+	<select id="id_search_ok2" parameterType="kr.co.kovea.memberdto.MemberDto" resultType="kr.co.kovea.memberdto.MemberDto">
+		select * from member where name=#{name} and phone=#{phone}
+	</select>
+
+	<select id="email_send" parameterType="kr.co.kovea.memberdto.MemberDto" resultType="kr.co.kovea.memberdto.MemberDto">
+		select * from member where userid=#{userid} and email=#{email}
+	</select>
+
+	<update id="pwd_change_ok" parameterType="kr.co.kovea.memberdto.MemberDto">
+		update member set pwd=#{pwd} where email=#{email}
+	</update>
+
 	<select id="mypage" resultType="kr.co.kovea.memberdto.MemberDto">
 		select * from member where userid=#{param}
 	</select>
@@ -27,20 +43,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="mem_update_ok" parameterType="kr.co.kovea.memberdto.MemberDto">
-		update member set email=#{email}, birth=#{birth}, phone=#{phone} where id=#{id}
+		update member set name=#{name}, userid=#{userid}, email=#{email}, birth=#{birth}, phone=#{phone} where id=${id}
 	</update>
 	
 	<update id="mem_del" parameterType="kr.co.kovea.memberdto.MemberDto">
 		update member set withdraw=1 where id=#{param}
 	</update>
-	
-
-	
-
-
-
-
-
 
 
 

@@ -5,8 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+	#first {
+		text-align:right;
+	}
+	a {
+		text-decoration:none;
+	}
+</style>
 </head>
 <body>
-	
+	메인페이지 <hr>
+	<div id="first">	
+  	  <a href="../login/login"> 로그인 </a>
+  	  <a href="../login/mypage"> 마이페이지 </a>
+	  <a href="../login/logout"> 로그아웃 </a>
+	</div>
 </body>
 </html>

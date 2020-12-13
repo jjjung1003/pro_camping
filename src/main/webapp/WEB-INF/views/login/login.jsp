@@ -69,7 +69,7 @@
     </ul>
     <ul id="right">
        <li>아이디 또는 비밀번호를 잊으셨나요?</li>
-       <li><a href="../login/id_search">아이디 찾기</a></li>
+       <li><a href="id_search">아이디 찾기</a></li>
        <li><a href="../login/pwd_search">패스워드 재설정</a></li>
     </ul>
 	</div>
