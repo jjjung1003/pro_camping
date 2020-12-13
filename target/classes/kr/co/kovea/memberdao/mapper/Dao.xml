@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybats-3-mapper.dtd">
+<mapper namespace="kr.co.kovea.memberdao.MemberDao">
+
+	<select id="userid_check" resultType="int">
+    	select count(*) from member where userid=#{param}
+    </select>
+    
+	<insert id="mem_third" parameterType="kr.co.kovea.memberdto.MemberDto">
+		insert into member(name,userid,pwd,email,birth,gen,phone,cla1,cla2,cla3,cla4,writeday)
+		values(#{name},#{userid},#{pwd},#{email},#{birth},#{gen},#{phone},#{cla1},#{cla2},#{cla3},#{cla4},now())
+	</insert>
+			
+	<select id="login_ok" parameterType="kr.co.kovea.memberdto.MemberDto" resultType="kr.co.kovea.memberdto.MemberDto">
+		select * from member where userid=#{userid} and pwd=#{pwd}
+	</select>
+	
+	<select id="mypage" resultType="kr.co.kovea.memberdto.MemberDto">
+		select * from member where userid=#{param}
+	</select>
+	
+	<select id="mem_update" resultType="kr.co.kovea.memberdto.MemberDto">
+		select * from member where id=#{param}
+	</select>
+	
+	<update id="mem_update_ok" parameterType="kr.co.kovea.memberdto.MemberDto">
+		update member set email=#{email}, birth=#{birth}, phone=#{phone} where id=#{id}
+	</update>
+	
+	<update id="mem_del" parameterType="kr.co.kovea.memberdto.MemberDto">
+		update member set withdraw=1 where id=#{param}
+	</update>
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
