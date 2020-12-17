@@ -10,9 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
 	<insert id="mem_third" parameterType="kr.co.kovea.memberdto.MemberDto">
-		insert into member(name,userid,pwd,email,birth,gen,phone,cla1,cla2,cla3,cla4,writeday)
-		values(#{name},#{userid},#{pwd},#{email},#{birth},#{gen},#{phone},#{cla1},#{cla2},#{cla3},#{cla4},now())
-	</insert>
+      insert into member(name,userid,pwd,email,birth,gen,phone,cla1,cla2,cla3,cla4,writeday)
+      values(TRIM(#{name}),TRIM(#{userid}),#{pwd},#{email},#{birth},#{gen},#{phone},#{cla1},#{cla2},#{cla3},#{cla4},now())
+   </insert>
 			
 	<select id="login_ok" parameterType="kr.co.kovea.memberdto.MemberDto" resultType="kr.co.kovea.memberdto.MemberDto">
 		select * from member where userid=#{userid} and pwd=#{pwd} and withdraw=0
@@ -49,6 +49,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="mem_del" parameterType="kr.co.kovea.memberdto.MemberDto">
 		update member set withdraw=1 where id=#{param}
 	</update>
+	
+	<select id="pwd_check" resultType="String">
+		select pwd from member where id=#{param}
+	</select>
 
 
 
@@ -58,3 +62,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 </mapper>
+
+

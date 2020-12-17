@@ -32,7 +32,7 @@
     	</c:if>
     	  
      	<c:if test="${chk == 0}">	<!-- chk라는 변수가 -->
-      		<div id="msg" style="color:red"> 메일이 발송되었습니다. </div>
+      		<div id="msg" style="color:red"> 발송된 메일을 확인해주세요. </div>
       		<div id="msg" style="color:red"> <a href="login"> 로그인하기</a></div>
     	</c:if> 
     </form>

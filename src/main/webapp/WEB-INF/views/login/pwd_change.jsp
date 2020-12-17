@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -73,13 +74,13 @@
 	  <table align="center">
 	    <tr>
 	      <td>
-	  	    <input type="password" name="pwd" id="pwd" placeholder="비밀번호" onblur="pwdchk(this)" style="width:300px; height:30px;"> <br>
+	  	    <input type="password" name="pwd" id="pwd" placeholder="변경할 비밀번호" onblur="pwdchk(this)" style="width:300px; height:30px;"> <br>
 	        <span id="pwd_msg" style="font-size:12px;"></span>
 	      </td>   
 	    </tr>
 	    <tr>
 	      <td>
-	  		<input type="password" name="pwd2" id="pwd2" placeholder="비밀번호 확인" onblur="pwdchk_eq(this)" style="width:300px; height:30px;"> <br>
+	  		<input type="password" name="pwd2" id="pwd2" placeholder="변경할 비밀번호 확인" onblur="pwdchk_eq(this)" style="width:300px; height:30px;"> <br>
 	 		<span id="pwd2_msg" style="font-size:12px;"></span>
 	      </td>   
 	    </tr>	    

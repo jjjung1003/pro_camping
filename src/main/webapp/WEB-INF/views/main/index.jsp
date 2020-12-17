@@ -17,6 +17,7 @@
 <body>
 	메인페이지 <hr>
 	<div id="first">	
+	  <a href="../notice/list"> 공지사항 </a>
   	  <a href="../login/login"> 로그인 </a>
   	  <a href="../login/mypage"> 마이페이지 </a>
 	  <a href="../login/logout"> 로그아웃 </a>

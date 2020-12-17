@@ -168,6 +168,7 @@ public class MemberController {
 		MemberDao mdao=sqlSession.getMapper(MemberDao.class);
 		MemberDto mdto=mdao.mem_update(id);
 		model.addAttribute("mdto", mdto);
+		model.addAttribute("chk", request.getParameter("chk"));
 		return "/login/mem_update";
 	}
 	
@@ -175,8 +176,15 @@ public class MemberController {
 	public String mem_update_ok(HttpServletRequest request,MemberDto mdto)
 	{
 		MemberDao mdao=sqlSession.getMapper(MemberDao.class);
-		mdao.mem_update_ok(mdto);
-		return "redirect:/login/mypage";
+		String pwd=mdao.pwd_check(request.getParameter("id"));
+		String id=request.getParameter("id");
+		if(pwd.equals(mdto.getPwd()))
+		{
+			mdao.mem_update_ok(mdto);
+			return "redirect:/login/mypage";
+		}
+		else
+			return "redirect:/login/mem_update?id="+id+"&chk=1";
 	}
 	
 	@RequestMapping("login/mem_del")

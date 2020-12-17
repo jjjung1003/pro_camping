@@ -19,7 +19,7 @@ public interface MemberDao {
 	public void mem_update_ok(MemberDto mdto);
 	public void mem_del(String id);
 	
-	
+	public String pwd_check(String id);
 	
 	
 	

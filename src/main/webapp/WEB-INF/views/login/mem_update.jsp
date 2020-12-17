@@ -14,8 +14,29 @@
 		var m=document.getElementById("month").value;
 		var d=document.getElementById("day").value;
 		var birth=y+"-"+m+"-"+d;
+		var pwd=document.getElementById("pwd").value;
+		
 		document.getElementById("birth").value=birth;
-	}	
+		
+		if(document.getElementById("year").selectedIndex==0||document.getElementById("month").selectedIndex==0||document.getElementById("day").selectedIndex==0)
+		{
+			 alert("생년월일을 확인해주세요");
+			 document.jjj.birth.focus();
+			 return false;
+		}
+		else if(document.getElementById("year").value > 2020-14)
+		{
+			alert("14세 미만은 가입할 수 없습니다.");
+			return false;
+		}
+		else if(document.getElementById("pwd").value == null)
+		{
+			alert("본인인증을 위해 로그인 비밀번호를 입력해주세요.");
+			return false;
+		}
+		else
+			return true;
+	}
 </script>
 </head>
 <body>
@@ -34,6 +55,10 @@
 	      <td> ${userid} <input type="hidden" name="userid" value="${mdto.userid}"> </td>
 	    </tr>
 	    <tr>
+	      <td> 비밀번호 </td>
+	      <td> <a href="pwd_change?id=${mdto.id}"> 변경 </a> </td>
+	    </tr>
+	    <tr>
 	      <td> 이메일 </td>
 	      <td> <input type="text" name="email" value="${mdto.email}"> </td>
 	    </tr>
@@ -41,7 +66,7 @@
 	      <td> 생년월일 </td>
 	      <td>
 	        <select id="year" name="year" id="year" style="width:100px;">
-	           <option> 생년 </option>
+	           <option> 년도 </option>
 		         <c:forEach var="i" begin="0" end="${2020-1900}">
 		         	<c:set var="year" value="${2020-i}" />
 		         	<option value="${year}">${year}</option>
@@ -71,11 +96,15 @@
 	      <td> <input type="text" name="phone" value="${mdto.phone}"></td>
 	    </tr>
 	    <tr>
-	      <td colspan="2" align="center"> 
-      		<input type="submit" value="정보수정">      		
-          </td>
-        </tr>
+	      <td> 패스워드 </td>
+	      <td> <input type="password" name="pwd" id="pwd">   <br>
+	        <c:if test="${chk != null}">
+     			<span id="pkc" style="color:red"> 비밀번호가 일치하지 않습니다. </span>
+   			</c:if>
+   		  </td>	 
+        </tr>       
 	  </table>
+	   <input type="submit" value="정보수정">
 	  </form>
 	</div>
 </body>
