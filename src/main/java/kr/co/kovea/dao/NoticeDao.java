@@ -10,7 +10,7 @@ public interface NoticeDao {
 
 	public void write_ok(NoticeDto ndto);
 
-	public ArrayList<NoticeDto> list();
+	public ArrayList<NoticeDto> list(int index);
 
 	public NoticeDto content(String id);
 
@@ -21,5 +21,11 @@ public interface NoticeDao {
 	public void update_ok(NoticeDto ndto);
 
 	public void delete(String id);
+
+	public int list_cnt();
+
+	public String pwd_chk(String email);
+
+	
 
 }

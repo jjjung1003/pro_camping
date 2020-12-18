@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,11 +52,48 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/notice/list")
-	public String list(Model model)
+	public String list(Model model, HttpServletRequest request)
 	{
 		NoticeDao ndao=sqlSession.getMapper(NoticeDao.class);		
-		ArrayList<NoticeDto> list=ndao.list();
+		
+		int pstart,pend,page,page_cnt;
+		
+		if(request.getParameter("page") == null)
+		{
+			page=1;
+		}
+		else
+			page=Integer.parseInt(request.getParameter("page"));
+		
+		int chong=ndao.list_cnt();
+		page_cnt=chong/10;	
+		
+		if(chong%10 != 0)	
+			page_cnt=page_cnt+1;
+		
+		pstart=page/10;	
+		
+		if(page%10 == 0)	
+			pstart=pstart-1;
+		
+		pstart=pstart*10+1;			
+		pend=pstart+9;	
+		
+		if(pend > page_cnt)
+			pend=page_cnt;
+		
+		int index;
+		index=(page-1)*10;
+		
+		ArrayList<NoticeDto> list=ndao.list(index);
+		
 		model.addAttribute("list", list);
+		model.addAttribute("page", page);
+		model.addAttribute("page_cnt", page_cnt);
+		model.addAttribute("pstart", pstart);
+		model.addAttribute("pend", pend);
+		model.addAttribute("list", list);
+		
 		return "/notice/list";
 	}
 	
@@ -72,20 +110,31 @@ public class NoticeController {
 	public String content(HttpServletRequest request, Model model)
 	{
 		String id=request.getParameter("id");
+		String chk=request.getParameter("chk");
 		NoticeDao ndao=sqlSession.getMapper(NoticeDao.class);
 		NoticeDto ndto=ndao.content(id);
 		model.addAttribute("ndto", ndto);
+		model.addAttribute("chk", chk);
 		return "/notice/content";
 	}
 	
 	@RequestMapping("/notice/update")
-	public String update(HttpServletRequest request, Model model)
+	public String update(HttpServletRequest request, Model model, HttpSession session)
 	{
+		String email=session.getAttribute("email").toString();
 		String id=request.getParameter("id");
+		String pwd=request.getParameter("pwd");		
 		NoticeDao ndao=sqlSession.getMapper(NoticeDao.class);
+		String dbpwd=ndao.pwd_chk(email);
 		NoticeDto ndto=ndao.update(id);
-		model.addAttribute("ndto", ndto);
-		return "/notice/update";
+		
+		if(dbpwd.equals(pwd))
+		{
+			model.addAttribute("ndto", ndto);
+			return "/notice/update";
+		}
+		else 
+			return "redirect:/notice/content?chk=1&id="+id;
 	}
 	
 	@RequestMapping("/notice/update_ok")
@@ -110,12 +159,21 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/notice/delete")
-	public String delete(HttpServletRequest request)
+	public String delete(HttpServletRequest request,HttpSession session)
 	{
+		String email=session.getAttribute("email").toString();
 		String id=request.getParameter("id");
+		String pwd=request.getParameter("pwd");	
 		NoticeDao ndao=sqlSession.getMapper(NoticeDao.class);
-		ndao.delete(id);
-		return "redirect:/notice/list";
+		String dbpwd=ndao.pwd_chk(email);
+		
+		if(dbpwd.equals(pwd))
+		{
+			ndao.delete(id);
+			return "redirect:/notice/list";
+		}
+		else 
+			return "redirect:/notice/content?chk=1&id="+id;		
 	}
 	
 	

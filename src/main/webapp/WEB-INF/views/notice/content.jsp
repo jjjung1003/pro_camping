@@ -6,6 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+	function update_pwd()
+	{
+		document.getElementById("pwd_chk1").style.visibility="visible";
+	}
+	function delete_pwd()
+	{
+		document.getElementById("pwd_chk2").style.visibility="visible";
+	}
+</script>
+
 </head>
 <body>
 	<table align="center" width="700">
@@ -25,9 +36,31 @@
 	    <td>File</td>
 	    <td><img src="../notice/img/${ndto.fname}" width="100"></td>
 	  </tr>	 
-	</table>
-	<div align="center"><input type="button" value="목록보기" onclick="location.href='list'"></div>
-	<div align="center"><input type="button" value="수정하기" onclick="location.href='update?id=${ndto.id}'"></div>
-	<div align="center"><input type="button" value="삭제하기" onclick="location.href='delete?id=${ndto.id}'"></div>
+	</table> <p>
+	<div align="center">
+	<span align="center"><input type="button" value="목록보기" onclick="location.href='list'"></span>
+	
+	<c:if test="${email == 'admin@jjj.com'}">	  
+		<span align="center"><input type="button" value="수정하기" onclick="update_pwd()"></span>		
+		<span align="center"><input type="button" value="삭제하기" onclick="delete_pwd()"></span> <p>
+		
+		<c:if test="${chk != null}">
+			<div align="center" style="color:red">비밀번호가 일치하지 않습니다.</div>
+		</c:if> 
+		
+		<form method="post" action="update?id=${ndto.id}" id="pwd_chk1" style="visibility:hidden">
+       	  <input type="hidden" name="id" value="${ndto.id}">
+          <input type="password" name="pwd" placeholder="수정: 비밀번호">
+       	  <input type="submit" value="확인">
+        </form>
+		
+		<form method="post" action="delete?id=${ndto.id}" id="pwd_chk2" style="visibility:hidden">
+       	  <input type="hidden" name="id" value="${ndto.id}">
+          <input type="password" name="pwd" placeholder="삭제: 비밀번호">
+       	  <input type="submit" value="확인">
+        </form>		
+	</c:if>
+	
+	</div>
 </body>
 </html>

@@ -19,6 +19,7 @@ public class Login_okCommand {
 		}
 		else
 		{
+			session.setAttribute("email", mdto2.getEmail());
 			session.setAttribute("userid", mdto2.getUserid());
 			session.setAttribute("name", mdto2.getName());
 			url="redirect:/main/index";

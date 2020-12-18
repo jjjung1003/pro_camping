@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="list" resultType="kr.co.kovea.dto.NoticeDto">
-		select * from notice
+		select * from notice order by id desc limit #{param}, 10
 	</select>
 	
 	<update id="hit">
@@ -34,7 +34,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from notice where id=#{param}
 	</delete>
 
+	<select id="list_cnt" resultType="int">
+		select count(*) from notice
+	</select>
 
+	<select id="pwd_chk" resultType="String">
+		select pwd from member where email=#{param}
+	</select>
 
 
 

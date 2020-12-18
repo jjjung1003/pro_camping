@@ -4,9 +4,15 @@ public class NoticeDto {
 
 	private int id, hit;
 	private long fsize;
-	private String name, title, content, fname, writeday;
+	private String name, pwd, title, content, fname, writeday;
 	
 	
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
 	public long getFsize() {
 		return fsize;
 	}

@@ -27,6 +27,63 @@
 	  </tr> 
 	  </c:forEach> 	   
 	</table> <p>
-	<div align="center"> <a href="write"> 글 쓰기 </a> </div>
+	
+	<div align="center">
+	  <c:if test="${pstart != 1}"> <!-- 1, 11, 21, 31.... -->
+	  	<a href="list?page=${pstart-1}">◁◁ </a>
+	  </c:if>
+	  <c:if test="${pstart == 1}"> 
+	  	◁◁
+	  </c:if>
+	  
+	  <c:if test="${page != 1}"> <!-- 1, 2, 3, 4.... -->
+	  	<a href="list?page=${page-1}">◁ </a>
+	  </c:if>
+	  <c:if test="${page == 1}"> 
+	  	◁
+	  </c:if>
+	  
+	  <c:forEach var="i" begin="${pstart}" end="${pend}">	
+	  	<c:if test="${page != i}">
+	  		<a href="list?page=${i}"> ${i}</a>
+	  	</c:if>
+	  	<c:if test="${page == i}">
+	  		<a href="list?page=${i}" style="color:red"> ${i}</a>
+	  	</c:if>
+	  </c:forEach>  
+	  
+	  <c:if test="${page != page_cnt}"> <!-- 1, 2, 3, 4.... -->
+	  	<a href="list?page=${page+1}">▷ </a>
+	  </c:if>
+	  <c:if test="${page == page_cnt}"> 
+	  	▷
+	  </c:if>
+	  
+	  <c:if test="${pend != page_cnt}"> <!-- 1, 11, 21, 31.... -->
+	  	<a href="list?page=${pend+1}">▷▷ </a>
+	  </c:if>
+	  <c:if test="${pend == page_cnt}"> 
+	  	▷▷ 
+	  </c:if>	  
+	</div>
+	
+	<c:if test="${email == 'admin@jjj.com'}">	
+		<div align="center"> <a href="write"> 글 쓰기 </a> </div>
+	</c:if>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,10 +8,11 @@
 </head>
 <body>
   <form method="post" action="write_ok" enctype="multipart/form-data">
+    <input type="hidden" name="name" value="관리자">
 	<table align="center" width="700">
 	  <tr>
 	    <td>Name</td>
-	    <td><input type="text" name="name" size="8"></td>
+	    <td>관리자</td>
 	  </tr>
 	  <tr>
 	    <td>Title</td>
