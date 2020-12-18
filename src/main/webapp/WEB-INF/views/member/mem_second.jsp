@@ -12,38 +12,47 @@
 	}
 </style>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script>
+
+	function chk_userid(tt)
+	{
+		var chkuserid=tt.value;
+		tt.value=chkuserid.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, "");
+	}
 
 	var cyj=new XMLHttpRequest();
 	var id_chk=0;
 	var pwd_chk=0;
 	
 	function idchk() {
-		
+
 		var uid=document.jjj.userid.value;
 		cyj.open("get","userid_check?userid="+uid);
 		cyj.send();
 	}	
 	
-		cyj.onreadystatechange=function()
+	cyj.onreadystatechange=function()
+	{
+		if(cyj.readyState==4)
 		{
-			if(cyj.readyState==4)
+			if(cyj.responseText == 1)
 			{
-				if(cyj.responseText == 1)
-				{
-					document.getElementById("id_msg").innerHTML="<span style='color:red;'>사용 불가능한 아이디</span>";
-					id_chk=0;
-				}
-				else
-				{
-					document.getElementById("id_msg").innerHTML="<span style='color:blue;'>사용 가능한 아이디</span>";
-					id_chk=1;
-				}	
+				document.getElementById("id_msg").innerHTML="<span style='color:red;'>사용 불가능한 아이디</span>";
+				id_chk=0;
+			}
+			else
+			{
+				document.getElementById("id_msg").innerHTML="<span style='color:blue;'>사용 가능한 아이디</span>";
+				id_chk=1;
 			}	
-		}
+		}	
+	}	
 	
 	function pwdchk(tt) {
-		
+
 		if(!(tt.value.length>=4 && tt.value.length<=10))
 		{
 			document.getElementById("pwd_msg").innerHTML="<span style='color:red;'> 4자이상 10자 이하로 가능합니다 </span>";
@@ -53,7 +62,7 @@
 		{
 			document.getElementById("pwd_msg").innerHTML="";
 			pwd_chk=0;
-		}	
+		}
 		else
 		{
 			document.getElementById("pwd_msg").innerHTML="";
@@ -79,15 +88,26 @@
 		}
 	}
 	
+	function phone_num(tt)
+	{
+		var chknum=tt.value;
+		tt.value=chknum.replace(/[^0-9]/g, "");
+	}
+	
 	function check(tt) {  // tt=> document.폼
 		
-		// year,month,day를 이용하여  yyyy-mm-dd 로 만들기
-		var y=document.getElementById("year").value;
-		var m=document.getElementById("month").value;
-		var d=document.getElementById("day").value;
-		var birth=y+"-"+m+"-"+d;
-		document.getElementById("birth").value=birth;
-		
+		var d = $("#day").val();	//입력값
+	    var m = $("#month").val();
+	    var y = $("#year").val();
+	    var age = 14;	    
+	    var birth=y+"-"+m+"-"+d;
+	    document.getElementById("birth").value=birth;
+	    
+	    var date1 = new Date();	//현재 날짜
+	    date1.setFullYear(y, m-1, d);
+	
+	    var date2 = new Date();
+	    date2.setFullYear(date2.getFullYear() - age);		
 		
 		if(!(document.getElementById("age14").checked))
 		{
@@ -128,41 +148,31 @@
 			 document.jjj.phone.focus();
 			 return false;
 		}
-		else if(document.getElementById("year").value > 2020-14)
+		else if((date2 - date1) < 0)
 		{
-			alert("14세 미만은 가입할 수 없습니다.");
-			return false;
-		}
-			
+	        alert("죄송합니다. 만 14세 미만은 가입할 수 없습니다.");
+	        return false;
+		}	
 		else
 			return true;
- 
-		
 	}
 
-	
-	
-</script>
-<!--
 
-	$("#jjj").submit(function(){
-	    var day = $("#day").val();
-	    var month = $("#month").val();
-	    var year = $("#year").val();
-	    var age = 14;
-	    var mydate = new Date();
-	    mydate.setFullYear(year, month-1, day);
-	
-	    var currdate = new Date();
-	    currdate.setFullYear(currdate.getFullYear() - age);
-	    if ((currdate - mydate) < 0){
-	        alert("Sorry, only persons over the age of " + age + " may enter this site");
-	        return false;
-	    }
-	    return true;
-	});
-	
--->
+	/* //pwd 체크 ---------------------------------- 실패
+	function chk_pwd(tt)
+	{
+		var pwd = $("#pwd").val();
+		var num = pwd.search(/[0-9]/g);
+		var eng = pwd.search(/[a-z]/ig);
+		var spe = pwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+		
+		if(num < 0 || eng < 0 || spe < 0 )
+		{
+			  alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+			  pwd_chk=0;
+		}	
+	}*/
+</script>	
 </head>
 <body>
 회원정보 입력
@@ -181,12 +191,12 @@
 	      <td> <input type="text" name="name" id="name" placeholder="이름" style="width:450px; height:40px;"> </td>
 	    </tr>
 	    <tr>
-	      <td> <input type="text" name="userid" id="userid" placeholder="아이디" onblur="idchk()" style="width:450px; height:40px;">
+	      <td> <input type="text" name="userid" id="userid" placeholder="아이디 (영문만 가능)" onblur="idchk()" onkeyup="chk_userid(this)" style="width:450px; height:40px;">
 	      	   <span id="id_msg" style="font-size:12px;"> </span>
 	      </td>
 	    </tr>
 	    <tr>
-	      <td> <input type="password" name="pwd" id="pwd" placeholder="비밀번호" onblur="pwdchk(this)" style="width:450px; height:40px;">
+	      <td> <input type="password" name="pwd" id="pwd" placeholder="비밀번호" onblur="pwdchk(this)" onkeyup="chk_pwd(this)" style="width:450px; height:40px;">
 	      	   <span id="pwd_msg" style="font-size:12px;"></span>
 	      </td>
 	    </tr>
@@ -234,7 +244,7 @@
 	      </td>
 	    </tr>
 	    <tr>
-	      <td> <input type="text" name="phone" id="phone" placeholder="휴대폰번호" style="width:400px; height:40px;"> <button> 인증 </button></td>
+	      <td> <input type="text" name="phone" id="phone" class="phone_num" placeholder="휴대폰번호 ( - 없이 숫자만 입력하세요)" style="width:400px; height:40px;" maxlength="11" onkeyup="phone_num(this)"> <button> 인증 </button></td>
 	    </tr> 
 	    <tr>
 	      <td> <input type="text" name="confirm" id="confirm" placeholder="SMS인증번호" style="width:400px; height:40px;"> <button> 확인 </button></td>

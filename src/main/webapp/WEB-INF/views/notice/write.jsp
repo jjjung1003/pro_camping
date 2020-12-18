@@ -8,7 +8,7 @@
 </head>
 <body>
   <form method="post" action="write_ok" enctype="multipart/form-data">
-	<table>
+	<table align="center" width="700">
 	  <tr>
 	    <td>Name</td>
 	    <td><input type="text" name="name" size="8"></td>
@@ -19,14 +19,14 @@
 	  </tr>
 	  <tr>  
 	    <td>Content</td>
-	    <td><textarea rows="30" cols="100" name="content"></textarea></td>
+	    <td><textarea rows="20" cols="100" name="content"></textarea></td>
 	  </tr>	 
 	  <tr>  
 	    <td>File</td>
 	    <td><input type="file" name="fname"> <span style="color:red"> 파일 필수 선택 </td>
 	  </tr>	 
-	</table>
-	<input type="submit" value="등록하기">
+	</table> <p>
+	<div align="center"> <input type="submit" value="등록하기"> </div>
   </form>	
 </body>
 </html>

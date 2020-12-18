@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import kr.co.kovea.noticedao.NoticeDao;
-import kr.co.kovea.noticedto.NoticeDto;
+import kr.co.kovea.dao.NoticeDao;
+import kr.co.kovea.dto.NoticeDto;
 
 @Controller 
 public class NoticeController {

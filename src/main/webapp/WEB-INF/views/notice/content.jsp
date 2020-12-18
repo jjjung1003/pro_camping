@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table align="center" width="700">
 	  <tr>
-	    <td>Name</td>
+	    <td width="150">Name</td>
 	    <td> ${ndto.name} </td>
 	  </tr>
 	  <tr>
@@ -26,7 +26,8 @@
 	    <td><img src="../notice/img/${ndto.fname}" width="100"></td>
 	  </tr>	 
 	</table>
-	<input type="button" value="수정하기" onclick="location.href='update?id=${ndto.id}'">
-	<input type="button" value="삭제하기" onclick="location.href='delete?id=${ndto.id}'">
+	<div align="center"><input type="button" value="목록보기" onclick="location.href='list'"></div>
+	<div align="center"><input type="button" value="수정하기" onclick="location.href='update?id=${ndto.id}'"></div>
+	<div align="center"><input type="button" value="삭제하기" onclick="location.href='delete?id=${ndto.id}'"></div>
 </body>
 </html>

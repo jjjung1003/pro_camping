@@ -6,12 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
-	<table>
+	<table align="center" width="700">
 	  <tr>
 	    <td>No.</td>
-	    <td>Content</td>
+	    <td width="300">Content</td>
 	    <td>Name</td>
 	    <td>Date</td>
 	    <td>Hits</td>
@@ -24,7 +25,8 @@
 	    <td>${ndto.writeday}</td>
 	    <td>${ndto.hit}</td>
 	  </tr> 
-	  </c:forEach>  
-	</table>
+	  </c:forEach> 	   
+	</table> <p>
+	<div align="center"> <a href="write"> 글 쓰기 </a> </div>
 </body>
 </html>

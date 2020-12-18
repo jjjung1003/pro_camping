@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.kovea.membercommand.Id_search_okCommand;
-import kr.co.kovea.membercommand.Login_okCommand;
-import kr.co.kovea.membercommand.Mail_SendCommand;
-import kr.co.kovea.memberdao.MemberDao;
-import kr.co.kovea.memberdto.MemberDto;
+import kr.co.kovea.dao.MemberDao;
+import kr.co.kovea.dto.MemberDto;
+import kr.co.kovea.memcommand.Id_search_okCommand;
+import kr.co.kovea.memcommand.Login_okCommand;
+import kr.co.kovea.memcommand.Mail_SendCommand;
 
 @Controller
 public class MemberController {

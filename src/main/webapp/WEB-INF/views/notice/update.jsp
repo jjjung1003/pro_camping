@@ -9,9 +9,9 @@
 <body>
 	<form method="post" action="update_ok?id=${ndto.id}" enctype="multipart/form-data">
 	<input type="hidden" name="name" value="${ndto.name}">
-	<table>
+	<table align="center" width="700">
 	  <tr>
-	    <td>Name</td>
+	    <td width="150">Name</td>
 	    <td>${ndto.name}</td>
 	  </tr>
 	  <tr>
@@ -20,14 +20,14 @@
 	  </tr>
 	  <tr>  
 	    <td>Content</td>
-	    <td><textarea rows="30" cols="100" name="content">${ndto.content}</textarea></td>
+	    <td><textarea rows="20" cols="100" name="content">${ndto.content}</textarea></td>
 	  </tr>	 
 	  <tr>  
 	    <td>File</td>
 	    <td><input type="file" name="fname"> <span style="color:red"> 파일 필수 선택 </span></td>
 	  </tr>	 
-	</table>
-	<input type="submit" value="수정하기">
+	</table> <p>
+	<div align="center"><input type="submit" value="수정하기"></div>
   </form>	
 </body>
 </html>
