@@ -13,6 +13,7 @@ public interface MemberDao {
 	public MemberDto id_search_ok2(MemberDto mdto);
 	public MemberDto email_send(MemberDto mdto);
 	public void pwd_change_ok(MemberDto mdto);
+	public void pwd_change2_ok(MemberDto mdto);
 
 	public MemberDto mypage(String userid);
 	public MemberDto mem_update(String id);
@@ -20,6 +21,7 @@ public interface MemberDao {
 	public void mem_del(String id);
 	
 	public String pwd_check(String id);
+	
 	
 	
 	

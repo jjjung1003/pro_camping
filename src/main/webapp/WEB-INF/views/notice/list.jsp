@@ -9,6 +9,16 @@
 
 </head>
 <body>
+	<div align="center">
+	<form method="post" action="list" name="jjj">
+		<select name="cla">
+			<option value="title"> 제목 </option>
+		</select>
+		<input type="text" name="search" value="${search}" placeholder="검색내용 입력">
+		<input type="submit" value="검색하기">
+	</form>
+	</div>
+	
 	<table align="center" width="700">
 	  <tr>
 	    <td>No.</td>

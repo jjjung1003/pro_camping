@@ -56,7 +56,7 @@
 	    </tr>
 	    <tr>
 	      <td> 비밀번호 </td>
-	      <td> <a href="pwd_change?id=${mdto.id}"> 변경 </a> </td>
+	      <td> <a href="../login/pwd_change2?id=${mdto.id}"> 변경 </a> </td>
 	    </tr>
 	    <tr>
 	      <td> 이메일 </td>

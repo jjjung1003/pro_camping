@@ -56,6 +56,19 @@ public class NoticeController {
 	{
 		NoticeDao ndao=sqlSession.getMapper(NoticeDao.class);		
 		
+		String cla, search;
+		
+		if(request.getParameter("cla") == null)
+		{
+			cla="title";
+			search="";
+		}
+		else
+		{
+			cla=request.getParameter("cla");
+			search=request.getParameter("search");
+		}
+		
 		int pstart,pend,page,page_cnt;
 		
 		if(request.getParameter("page") == null)
@@ -65,7 +78,7 @@ public class NoticeController {
 		else
 			page=Integer.parseInt(request.getParameter("page"));
 		
-		int chong=ndao.list_cnt();
+		int chong=ndao.list_cnt(cla,search);
 		page_cnt=chong/10;	
 		
 		if(chong%10 != 0)	
@@ -85,7 +98,7 @@ public class NoticeController {
 		int index;
 		index=(page-1)*10;
 		
-		ArrayList<NoticeDto> list=ndao.list(index);
+		ArrayList<NoticeDto> list=ndao.list(index,cla,search);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
@@ -93,6 +106,8 @@ public class NoticeController {
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
 		model.addAttribute("list", list);
+		model.addAttribute("cla",cla);
+		model.addAttribute("search",search);
 		
 		return "/notice/list";
 	}

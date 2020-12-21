@@ -136,6 +136,13 @@ public class MemberController {
 		return "/login/pwd_change";
 	}
 	
+	@RequestMapping("/login/pwd_change2")
+	public String pwd_change2(HttpServletRequest request,Model model)
+	{
+		model.addAttribute("id",request.getParameter("id"));
+		return "/login/pwd_change2";
+	}
+	
 	@RequestMapping("/login/pwd_change_ok")
 	public String pwd_change_ok(MemberDto mdto)
 	{
@@ -149,6 +156,14 @@ public class MemberController {
 		mdto.setEmail(decode_email);
 		
 		mdao.pwd_change_ok(mdto);
+		return "redirect:/login/login";
+	}
+	
+	@RequestMapping("/login/pwd_change2_ok")
+	public String pwd_change2_ok(MemberDto mdto)
+	{
+		MemberDao mdao=sqlSession.getMapper(MemberDao.class);		
+		mdao.pwd_change2_ok(mdto);
 		return "redirect:/login/login";
 	}
 	
