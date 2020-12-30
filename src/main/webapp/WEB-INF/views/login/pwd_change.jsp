@@ -7,9 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	#first {
+
+	hr {
+		border:1px solid #B40404;
+		width:600px;
+		align:center;
+		background-color:#B40404;
+		margin-bottom:50px;
+	}	
+	
+	#pwdchg {
 		text-align:center;
+		margin-top:50px;
+		margin-bottom:150px;
 	}
+	
 </style>
 <script>
 
@@ -65,10 +77,13 @@
 	}
 	
 </script>
+
 </head>
 <body>
-	비밀번호 변경 <hr>
-	<div id="first">
+
+	<div align="center"> <h2> 비밀번호 변경 </h2></div>
+<hr>	
+	<div id="pwdchg">
 	<form method="post" name="jjj" action="pwd_change_ok" onsubmit="return check(this)">
 	  <input type="hidden" name="email" value="${email}">
 	  <table align="center">

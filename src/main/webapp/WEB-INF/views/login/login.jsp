@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 <style>
 	#login {
-		margin-top:100px;
+		margin-top:50px;
+		margin-bottom:150px;
 	}
 	#log_fir #loginbtn {
 		margin-top:20px;
@@ -29,13 +30,37 @@
 	#log_thir #right {
 		float:right;
 	}
+	#fourth {
+		width:1280px;
+		text-align:center;
+		margin:auto;
+	}
+	
+	
+	#hr_1 {
+		border:1px solid #B40404;
+		width:700px;
+		align:center;
+		background-color:#B40404;
+		margin-bottom:50px;
+	}
+	
+	#log_btn {
+		margin-left:10px;
+	}
+	
+	#log_btn1 {
+		background-color:#A4A4A4;	
+		color:white;	
+	}
+
 </style>
 </head>
 <body>
-  
-  	로그인<br>
-  	첫 캠핑이 선물한 뜻밖의 세상_코베아  	
-  	<hr>
+<div align="center"> <h2> 로그인
+  	  	</h2><br>첫 캠핑이 선물한 뜻밖의 세상_코베아 </div>
+	<hr id="hr_1">
+
   <div id="login" align="center">
   	<div id="log_fir">
 	<form method="post" action="login_ok">
@@ -64,13 +89,13 @@
 	
 	<div id="log_thir">
 	<ul id="left">
-       <li>신규 회원가입 진행하시겠습니까?</li>
-       <li><a href="../member/mem_first">회원가입</a></li>     
+       <li><span> 신규 회원가입 진행하시겠습니까? </span></li><p>
+       <li><span id="log_btn"><a href="../member/mem_first" id="log_btn1">회원가입</a></span></li>     
     </ul>
     <ul id="right">
-       <li>아이디 또는 비밀번호를 잊으셨나요?</li>
-       <li><a href="id_search">아이디 찾기</a></li>
-       <li><a href="../login/pwd_search">패스워드 재설정</a></li>
+       <li>아이디 또는 비밀번호를 잊으셨나요?</li><p>
+       <li><span id="log_btn"><a href="id_search" id="log_btn1">아이디 찾기</a></span></li> <p>
+       <li><span id="log_btn"><a href="../login/pwd_search" id="log_btn1"> 패스워드 재설정</a></span></li>
     </ul>
 	</div>
   </div>		

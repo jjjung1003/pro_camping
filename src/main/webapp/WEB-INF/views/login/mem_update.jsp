@@ -38,10 +38,28 @@
 			return true;
 	}
 </script>
+<style>
+	#mpg_up {
+		width:1280px;
+		text-align:center;
+		margin:auto;
+		margin-bottom:150px;
+	}
+	
+	#hr_1 {
+		border:1px solid #B40404;
+		width:700px;
+		align:center;
+		background-color:#B40404;
+		margin-bottom:50px;
+	}
+	
+</style>
 </head>
 <body>
-	정보 수정 페이지
-	<hr>
+<div align="center"> <h2> 정보 수정 페이지 </h2> </div> <p>
+	<hr id="hr_1">
+	<div id="mpg_up">
 	<div id="base" align="center">
 	<form method="post" name="jjj" action="mem_update_ok?id=${mdto.id}" onsubmit="return check(this)">
 		<input type="hidden" name="id" value="${mdto.id}">
@@ -95,17 +113,19 @@
 	      <td> 휴대폰번호 </td>
 	      <td> <input type="text" name="phone" value="${mdto.phone}"></td>
 	    </tr>
-	    <tr>
-	      <td> 패스워드 </td>
-	      <td> <input type="password" name="pwd" id="pwd">   <br>
+	           
+	  </table> <p><br>
+	  
+		<div id="mpgup_pwd" align="center">
+	      <div style="font-size:12px"> 정보변경을 위해 비밀번호를 입력해주세요 </div>
+	     <input type="password" name="pwd" id="pwd">   <br>
 	        <c:if test="${chk != null}">
-     			<span id="pkc" style="color:red"> 비밀번호가 일치하지 않습니다. </span>
+     			<span id="pkc" style="color:red;font-size:12px"> 비밀번호가 일치하지 않습니다. </span>
    			</c:if>
-   		  </td>	 
-        </tr>       
-	  </table>
-	   <input type="submit" value="정보수정">
+		</div> <p>
+	   <span id="mpg_upbtn"><input type="submit" value="정보수정"></span>
 	  </form>
 	</div>
+</div>
 </body>
 </html>

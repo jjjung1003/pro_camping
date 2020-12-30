@@ -6,8 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+	hr {
+		border:1px solid #B40404;
+		width:850px;
+		align:center;
+		background-color:#B40404;
+		margin-bottom:50px;
+	}
+	
+	#notice_update {
+		margin-top:50px;
+		margin-bottom:150px;
+	}
+</style>
 </head>
 <body>
+<div align="center"> <h2> 공지사항 수정</h2> </div>
+	<hr>
+	<div id="notice_update">
 	<form method="post" action="update_ok?id=${ndto.id}" enctype="multipart/form-data">
 	<input type="hidden" name="name" value="${ndto.name}">
 	<table align="center" width="700">
@@ -35,10 +52,9 @@
 	    <td>File</td>
 	    <td><input type="file" name="fname"> <span style="color:red"> 파일 필수 선택 </span></td>
 	  </tr>	 
-	</table> <p>
-	<div align="center"><input type="submit" value="수정하기"></div>
-
-	
+	</table> <p><br>
+	<div align="center"><input type="submit" value="수정하기"></div>	
   </form>	
+  </div>
 </body>
 </html>

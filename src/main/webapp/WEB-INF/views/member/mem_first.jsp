@@ -29,13 +29,27 @@
 	#ag_2 {
 		margin-top:5px;
 	}	
+	
+	hr {
+		border:1px solid #B40404;
+		width:1100px;
+		align:center;
+		background-color:#B40404;
+	}
+	
+	#sixth {
+		margin-top:50px;
+		margin-bottom:150px;
+	}
 
 </style>
 </head>
 <body>
+<div align="center"> <h2> 회원가입 </h2></div>
+	<hr>
   <form method="post" name="agree" action="mem_second">
 	  <div id="cla1" name="cla" align="center"> 
-	    <div> 회원 가입을 하기에 앞서 회원약관을 읽어보시기 바랍니다. </div>
+	    <div style="width:1000px;color:#B40404" align="left"> 회원 가입을 하기에 앞서 회원약관을 읽어보시기 바랍니다. </div>
 	    <div> <textarea rows="10" cols="140">
 	    제1장. 총칙
 1.제1조 (목적) 
@@ -241,7 +255,7 @@
 	  
 	  <div id="cla2" name="cla" align="center"> 
 	  <table width="1000" height="100" border="1px solid black"> 
-	    <div> [필수] 개인정보 수집·이용 </div>
+	    <div style="width:1000px;color:#B40404" align="left"> [필수] 개인정보 수집·이용 </div>
 	    <tr>
 	      <td> 목적 </td>
 	      <td> 항목 </td>
@@ -263,7 +277,7 @@
 	  <div id="cla3" name="cla" align="center"> 
 	  <table width="1000" height="100" border="1px solid black"> 
 	    <tr>
-	    <div> [선택] 개인정보 수집·이용 </div>
+	    <div style="width:1000px;color:#B40404" align="left"> [선택] 개인정보 수집·이용 </div>
 	      <td> 목적 </td>
 	      <td> 항목 </td>
 	      <td> 보유기간 </td>
@@ -285,7 +299,7 @@
 	  <div id="cla4" name="cla" align="center"> 
 	  <table width="1000" height="100" border="1px solid black"> 
 	    <tr>
-	    <div> [선택] 광고성 정보 수신 </div>
+	    <div style="width:1000px;color:#B40404" align="left"> [선택] 광고성 정보 수신 </div>
 	      <td> 광고성 정보 수신 동의 </td>
 	      <td colspan="3"> 
 	      	<input type="radio" name="cla_four" value="1" checked> 동의함 </input>
@@ -294,11 +308,11 @@
 	    </tr> 
 	  </table>
 	  <div> * 서비스 제공을 위한 최소한의 개인정보이므로 동의를 해주셔야 서비스를 이용하실 수 있습니다. </div>
-	  </div>	     
+	  </div>	    
 
-	<div align="center">
-	  <div id="ag_1"> <input type="submit" value="동의합니다."> </div>
-	  <div id="ag_2"> <input type="button" onclick="location='../main/index'" value="가입 취소하기"> </div>
+	<div align="center" id="sixth">
+	  <span id="ag_1"> <input type="submit" value="동의합니다."> </span>
+	  <span id="ag_2"> <input type="button" onclick="location='../main/index'" value="가입 취소하기"> </span>
 	</div>   
   </form>
   

@@ -9,7 +9,20 @@
 <style>
 	#btn {
 		margin-top:50px;
+		margin-bottom:150px;
 	}
+	
+	hr {
+		border:1px solid #B40404;
+		width:600px;
+		align:center;
+		background-color:#B40404;
+	}
+	
+	#sec_first {
+		margin-top:50px;
+	}
+	
 </style>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -175,7 +188,7 @@
 </script>	
 </head>
 <body>
-회원정보 입력
+<div align="center"> <h2>회원정보 입력 </h2></div>
 <hr>
   <div id="sec_first" align="center">
 	<form method="post" name="jjj" action="mem_third" onsubmit="return check(this)">
@@ -184,7 +197,7 @@
 	<input type="hidden" name="cla3" value="${cla3}">
 	<input type="hidden" name="cla4" value="${cla4}">
 	  <table width="450" height="480">
-	  <div style="color:red;"> <input type="checkbox" name="age14" id="age14" value="1"> (필수)14세 이상만 가입할 수 있습니다.  </div>
+	  <div style="color:#B40404;"> <input type="checkbox" name="age14" id="age14" value="1"> (필수)14세 이상만 가입할 수 있습니다.  </div>
 	  <div style="font-size:12px;"> * 회원가입에 필요한 최소한의 정보만 입력 받음으로써<br>고객님의 개인정보 수집을 최소화하고 편리한 회원가입을 제공합니다.</div> <p>
 	  
 	    <tr>
@@ -244,11 +257,9 @@
 	      </td>
 	    </tr>
 	    <tr>
-	      <td> <input type="text" name="phone" id="phone" class="phone_num" placeholder="휴대폰번호 ( - 없이 숫자만 입력하세요)" style="width:400px; height:40px;" maxlength="11" onkeyup="phone_num(this)"> <button> 인증 </button></td>
+	      <td> <input type="text" name="phone" id="phone" class="phone_num" placeholder="휴대폰번호 ( - 없이 숫자만 입력하세요)" style="width:450px; height:40px;" maxlength="11" onkeyup="phone_num(this)"></td>
 	    </tr> 
-	    <tr>
-	      <td> <input type="text" name="confirm" id="confirm" placeholder="SMS인증번호" style="width:400px; height:40px;"> <button> 확인 </button></td>
-	    </tr>  
+	     
 	  </table>	
 	  	  
 	  <div id="btn" align="center">

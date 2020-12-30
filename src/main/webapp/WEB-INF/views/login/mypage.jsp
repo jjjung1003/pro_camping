@@ -6,10 +6,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+	#mpg_fourth {
+		width:1280px;
+		text-align:center;
+		margin:auto;
+		margin-bottom:150px;
+	}
+	
+	#hr_1 {
+		border:1px solid #B40404;
+		width:700px;
+		align:center;
+		background-color:#B40404;
+		margin-bottom:50px;
+	}
+	
+	#mpg_btn {
+		margin-left:10px;	
+	}
+	
+	#mpg_btn1 {
+		background-color:#A4A4A4;	
+		color:white;	
+	}
+</style>
 </head>
 <body>
-	${mdto.name}님의 정보입니다.
-	<hr>
+
+<div align="center"> <h2> ${mdto.name}님의 정보입니다. </h2> </div> <p>
+	<hr id="hr_1">
+	
+	<div id="mpg_fourth">
 	<div id="base" align="center">
 		<input type="hidden" name="id" value="${mdto.id}">
 	  <table width="350" height="200">
@@ -32,14 +60,22 @@
 	    <tr>
 	      <td> 휴대폰번호 </td>
 	      <td> ${mdto.phone}</td>
-	    </tr>
+	    </tr> <p>
 	    <tr>
-	      <td colspan="2" align="center"> 
-      		<a href="mem_update?id=${mdto.id}"> 정보 수정 </a>
-      		<a href="mem_del?id=${mdto.id}"> 회원 탈퇴 </a>
-          </td>
+	      
         </tr>
-	  </table>
+	  </table> <p>
+	  <td colspan="2" align="center"> 
+      		<span id="mpg_btn"><a href="mem_update?id=${mdto.id}" id="mpg_btn1"> 정보 수정 </a></span>
+      		<span id="mpg_btn"><a href="mem_del?id=${mdto.id}" id="mpg_btn1"> 회원 탈퇴 </a></span>
+          </td>
+	</div>
 	</div>
 </body>
 </html>
+
+
+
+
+
+

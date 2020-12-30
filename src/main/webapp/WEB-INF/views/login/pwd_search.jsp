@@ -7,33 +7,51 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	#first {
+	#pwdsear {
+		width:800px;
 		text-align:center;
+		margin:auto;
+		margin-bottom:150px;
+	}
+	
+	hr {
+		border:1px solid #B40404;
+		width:600px;
+		align:center;
+		background-color:#B40404;
+		margin-bottom:50px;
+	}
+	
+	#pwdsear_btn {
+		background-color:#A4A4A4;	
+		color:white;	
 	}
 </style>
 </head>
 <body>
-  <div id="first">
+
+<div align="center"> <h2> 패스워드 재설정 </h2> 
+	<hr>
+	  패스워드 재설정을 위해 메일이 발송됩니다. </div> <br><p>
+  <div id="pwdsear">
     <form method="post" action="pwd_search_ok">
-    패스워드 재설정 <hr><br>
-    
-    패스워드 재설정을 위해 메일이 발송됩니다.<br> 
+
 
         <div id="">
           <input type="text" name="userid" placeholder="아이디"> <p>
 		  <input type="text" name="email" placeholder="이메일 주소"> 
-		</div> <p>
+		</div> <p> <br>
         <div id="">
           <input type="submit" value="메일 받기">          
-        </div> <p>
+        </div> <br>
         
         <c:if test="${chk == 1}">	<!-- chk라는 변수가 -->
-      		<div id="msg" style="color:red"> 기재하신 아이디와 이메일로 등록된 정보가 없습니다. </div>
+      		<div id="msg" style="color:#F7819F; font-size:15px;"> 기재하신 아이디와 이메일로 등록된 정보가 없습니다. </div>
     	</c:if>
     	  
      	<c:if test="${chk == 0}">	<!-- chk라는 변수가 -->
-      		<div id="msg" style="color:red"> 발송된 메일을 확인해주세요. </div>
-      		<div id="msg" style="color:red"> <a href="login"> 로그인하기</a></div>
+      		<div id="msg" style="color:#F7819F; font-size:15px;"> 발송된 메일을 확인해주세요. </div> <p>
+      		<div id="msg"> <a href="login" id="pwdsear_btn"> 로그인하러 가기</a></div>
     	</c:if> 
     </form>
   </div>	

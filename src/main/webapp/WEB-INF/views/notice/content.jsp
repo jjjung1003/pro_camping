@@ -16,9 +16,25 @@
 		document.getElementById("pwd_chk2").style.visibility="visible";
 	}
 </script>
-
+<style>
+	hr {
+		border:1px solid #B40404;
+		width:800px;
+		align:center;
+		background-color:#B40404;
+		margin-bottom:50px;
+	}
+	
+	#notice_content {
+		margin-top:50px;
+		margin-bottom:150px;
+	}
+</style>
 </head>
 <body>
+	<div align="center"> <h2> 공지사항</h2> </div>
+	<hr>
+	<div id="notice_content">
 	<table align="center" width="700">
 	  <tr>
 	    <td width="150">Name</td>
@@ -29,18 +45,18 @@
 	    <td>${ndto.title}</td>
 	  </tr>
 	  <tr>  
-	    <td>Content</td>
-	    <td>${ndto.content}</td>
-	  </tr>	 
-	  <tr>  
 	    <td>File</td>
 	    <td><img src="../notice/img/${ndto.fname}" width="100"></td>
+	  </tr>	 
+	  <tr>  
+	    <td>Content</td>
+	    <td>${ndto.content}</td>
 	  </tr>	 
 	</table> <p>
 	<div align="center">
 	<span align="center"><input type="button" value="목록보기" onclick="location.href='list'"></span>
 	
-	<c:if test="${email == 'admin@jjj.com'}">	  
+	<c:if test="${email == 'yunjjjung1003@naver.com'}">	  
 		<span align="center"><input type="button" value="수정하기" onclick="update_pwd()"></span>		
 		<span align="center"><input type="button" value="삭제하기" onclick="delete_pwd()"></span> <p>
 		
@@ -60,7 +76,7 @@
        	  <input type="submit" value="확인">
         </form>		
 	</c:if>
-	
+	</div>
 	</div>
 </body>
 </html>
